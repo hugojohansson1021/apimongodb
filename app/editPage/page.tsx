@@ -64,6 +64,12 @@ export default function Page() {
         },
         body: JSON.stringify(formData),
       });
+      setFormData({
+        name: "",
+        email: "",
+        age: 0,
+      });
+      
 
       if (response.ok) {
         alert("Användaren uppdaterades framgångsrikt.");
