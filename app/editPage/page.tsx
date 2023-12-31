@@ -41,13 +41,30 @@ export default function Page() {
     }
   };
 
+
+
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = event.target;
+  
+    // Kontrollera om användaren försöker ändra e-postadressen
+    if (name === 'email' && selectedUser && value !== selectedUser.email) {
+      alert('E-post går inte att ändra, kontakta support.');
+      return;
+    }
+  
     setFormData({
       ...formData,
       [name]: type === 'number' ? parseFloat(value) || 0 : value,
     });
   };
+  
+
+
+
+
+
+  
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
