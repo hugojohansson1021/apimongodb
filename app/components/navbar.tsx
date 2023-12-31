@@ -1,13 +1,7 @@
-import React from "react";
+import Link from 'next/link';
 
 const Navbar = () => {
-
-
-
   return (
-    <div>
-
-    
     <nav className="bg-blue-500 p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
@@ -17,30 +11,29 @@ const Navbar = () => {
           {/* Meny länkar */}
           <ul className="flex space-x-4">
             <li>
-              <a href="/" className="text-white hover:text-blue-200">
-                Sign in 
-              </a>
+              <Link href="/" passHref>
+                <span className="text-white hover:text-blue-200 cursor-pointer">Sign in</span>
+              </Link>
             </li>
             <li>
-              <a href="./editPage" className="text-white hover:text-blue-200">
-                Edit
-              </a>
+              <Link href="/editPage" passHref>
+                <span className="text-white hover:text-blue-200 cursor-pointer">Edit</span>
+              </Link>
             </li>
             <li>
-              <a href="#" className="text-white hover:text-blue-200">
-                Movie Search
-              </a>
+              <Link href="/movieSearch" passHref>
+                <span className="text-white hover:text-blue-200 cursor-pointer">Movie Search</span>
+              </Link>
             </li>
             <li>
-              <a href="./kontakta" className="text-white hover:text-blue-200">
-                Kontakta
-              </a>
+              <Link href="/kontakta" passHref>
+                <span className="text-white hover:text-blue-200 cursor-pointer">Kontakta</span>
+              </Link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    </div>
   );
 };
 
