@@ -1,22 +1,19 @@
-on: push
-name: 🚀 Deploy website on push
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main  # Eller vilken branch du använder för deployment
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: 🚚 Get latest code
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
-    # Lägg till ett steg här för att lista filer (för felsökning)
-    - name: List files
-      run: ls -al
+    - name: Install Vercel CLI
+      run: npm i -g vercel
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      with:
-        server: ftp.appkonsult.se
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+    - name: Deploy to Vercel
+      run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
